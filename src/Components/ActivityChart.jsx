@@ -9,9 +9,10 @@ import {
   LineElement,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, Filler);
 
 const MonthlyActivityChart = () => {
   const chartRef = useRef(null);
@@ -22,22 +23,37 @@ const MonthlyActivityChart = () => {
       {
         label: "Appointments",
         data: [30, 45, 35, 55, 40, 60, 45],
-        borderColor: "#5754a7", // Tailwind blue
-        backgroundColor: "rgba(87, 84, 167, 0.3)", // Semi-transparent blue fill
+        borderColor: "#5754a7", // Line color
+        backgroundColor: (ctx) => {
+          const chart = ctx.chart;
+          const { ctx: canvasCtx, chartArea } = chart;
+
+          if (!chartArea) {
+            return "#dddbff"; // Fallback for initial render
+          }
+
+          // Create gradient
+          const gradient = canvasCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+          gradient.addColorStop(0, "#c8c4ff"); // Semi-transparent top color
+          gradient.addColorStop(1, "rgba(255, 255, 255, 0.3)"); // More transparent bottom color
+          return gradient;
+        },
         pointBorderColor: "#5754a7",
-        tension: 0.4, // Smooth lines
-        fill: "start", // Fill below the line
-        hoverRadius: 5,
-        hoverBorderWidth: 3,
+        tension: 0.4,
+        fill: true, // Enable gradient fill
+        order: 1, // Draw first (background layer)
       },
       {
         label: "New Patients",
         data: [50, 30, 75, 30, 70, 40, 100],
-        borderColor: "#38cae0", // Tailwind green
-        backgroundColor: "rgba(0, 0, 0, 0)", // No background color
+        borderColor: "#38cae0", // Line color
+        backgroundColor: "rgba(0, 0, 0, 0)", // Transparent
         pointBackgroundColor: "#38cae0",
-        tension: 0.4,
-        hoverRadius: 5,
+        borderWidth: 3, // Thicker line
+        pointRadius: 3, // Larger points
+        tension: 0.4, // Smooth curve
+        fill: false, // No fill
+        order: 2, // Draw on top
         hoverBorderWidth: 3,
       },
     ],
@@ -53,7 +69,7 @@ const MonthlyActivityChart = () => {
             size: 14,
             family: "Poppins, sans-serif",
           },
-          color: "#374151", // Tailwind gray-700
+          color: "#374151",
         },
       },
       title: {
@@ -64,7 +80,7 @@ const MonthlyActivityChart = () => {
           family: "Poppins, sans-serif",
           weight: "600",
         },
-        color: "#1F2937", // Tailwind gray-800
+        color: "#1F2937",
       },
       tooltip: {
         backgroundColor: "#1F2937",
@@ -85,7 +101,6 @@ const MonthlyActivityChart = () => {
       x: {
         grid: {
           color: "rgba(0, 0, 0, 0)", // Remove gridlines
-          drawBorder: false,
         },
         ticks: {
           color: "#6B7280",
@@ -98,7 +113,6 @@ const MonthlyActivityChart = () => {
       y: {
         grid: {
           color: "rgba(0, 0, 0, 0)", // Remove gridlines
-          drawBorder: false,
         },
         ticks: {
           color: "#6B7280",
@@ -111,7 +125,7 @@ const MonthlyActivityChart = () => {
       },
     },
     animation: {
-      duration: 500, // Smooth animation between updates
+      duration: 500,
       easing: "easeInOutQuad",
     },
   };
@@ -119,7 +133,7 @@ const MonthlyActivityChart = () => {
   return (
     <div className="bg-white shadow rounded-lg p-4 mb-8">
       <h2 className="font-semibold mb-3">Activity</h2>
-      <div className="">
+      <div>
         <Line ref={chartRef} data={data} options={options} />
       </div>
     </div>
