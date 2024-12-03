@@ -3,7 +3,7 @@ import { FaCalendarAlt, FaCog, FaTachometerAlt, FaUserFriends } from 'react-icon
 import { RxDashboard } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 import "../../App.css";
-import { RiCalendarCheckLine, RiCapsuleLine } from 'react-icons/ri';
+import { RiCalendarCheckLine, RiCapsuleLine, RiMedicineBottleLine } from 'react-icons/ri';
 import { BsCalendar4Event } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import { IoIosLogOut } from 'react-icons/io';
@@ -12,6 +12,7 @@ import { LuWarehouse } from 'react-icons/lu';
 import { CgNotes } from 'react-icons/cg';
 import { FaRegNoteSticky } from 'react-icons/fa6';
 import { GrDocumentNotes } from 'react-icons/gr';
+import { TbMedicineSyrup } from 'react-icons/tb';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ const Sidebar = () => {
 
     return (
         <div className=' '>
-            <h2 className="text-xl font-bold mb-10">Doctors App</h2>
+            <h2 className="text-xl font-bold mb-8">Doctors App</h2>
             <ul className='flex flex-col gap-3 text-gray-300'>
 
                 <li
@@ -80,6 +81,17 @@ const Sidebar = () => {
                 <li
                     className={`flex p-[10px] items-center duration-300 cursor-pointer rounded-l ${selectedMenu === "/settings" ? "bg-secondary text-primary" : "hover:text-white"
                         }`}
+                    onClick={() => setSelectedMenu("/telemedicine")}
+                >
+                    <RiMedicineBottleLine className="mr-4 text-xl" />
+                    <Link to="/telemedicine" className="block">
+                    Telemedicine
+                    </Link>
+                </li>
+
+                <li
+                    className={`flex p-[10px] items-center duration-300 cursor-pointer rounded-l ${selectedMenu === "/settings" ? "bg-secondary text-primary" : "hover:text-white"
+                        }`}
                     onClick={() => setSelectedMenu("/settings")}
                 >
                     <FaCog className="mr-4 text-xl" />
@@ -103,11 +115,11 @@ const Sidebar = () => {
                 <li
                     className={`flex p-[10px] items-center duration-300 cursor-pointer rounded-l ${selectedMenu === "/settings" ? "bg-secondary text-primary" : "hover:text-white"
                         }`}
-                    onClick={() => setSelectedMenu("/settings")}
+                    onClick={() => setSelectedMenu("/billing")}
                 >
                     <LuWarehouse className="mr-4 text-xl" />
-                    <Link to="/settings" className="block">
-                        Finance
+                    <Link to="/billing" className="block">
+                    Billing
                     </Link>
                 </li>
 

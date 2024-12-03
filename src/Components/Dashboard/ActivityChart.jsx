@@ -131,8 +131,8 @@ const MonthlyActivityChart = () => {
   };
 
   return (
-    <div className="bg-white shadow rounded-lg p-4 mb-8">
-      <h2 className="font-semibold mb-3">Activity</h2>
+    <div className="bg-white shadow rounded-lg p-4 2xl:p-6 mb-8">
+      <h2 className="font-semibold 2xl:text-xl mb-3">Activity</h2>
       <div>
         <Line ref={chartRef} data={data} options={options} />
       </div>
