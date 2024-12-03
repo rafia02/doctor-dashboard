@@ -9,13 +9,16 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { IoIosLogOut } from 'react-icons/io';
 import { IoDocumentTextOutline } from 'react-icons/io5';
 import { LuWarehouse } from 'react-icons/lu';
+import { CgNotes } from 'react-icons/cg';
+import { FaRegNoteSticky } from 'react-icons/fa6';
+import { GrDocumentNotes } from 'react-icons/gr';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState("/"); // State to track selected menu
 
     return (
-        <div>
+        <div className=' '>
             <h2 className="text-xl font-bold mb-10">Doctors App</h2>
             <ul className='flex flex-col gap-3 text-gray-300'>
 
@@ -105,6 +108,17 @@ const Sidebar = () => {
                     <LuWarehouse className="mr-4 text-xl" />
                     <Link to="/settings" className="block">
                         Finance
+                    </Link>
+                </li>
+
+                <li
+                    className={`flex p-[10px] items-center duration-300 cursor-pointer rounded-l ${selectedMenu === "/settings" ? "bg-secondary text-primary" : "hover:text-white"
+                        }`}
+                    onClick={() => setSelectedMenu("/settings")}
+                >
+                    <GrDocumentNotes className="mr-4 text-xl" />
+                    <Link to="/settings" className="block">
+                        Notes
                     </Link>
                 </li>
 

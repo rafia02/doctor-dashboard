@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { MdOutlinePhoneMissed } from 'react-icons/md'
-import Details from '../Components/Details'
-import Profile from '../Components/Profile'
+import Details from '../Components/Dashboard/Details'
+import Profile from '../Components/Dashboard/Profile'
+
 
 const Homepage = () => {
 
