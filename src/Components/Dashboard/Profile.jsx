@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FaRegEdit } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
 import { MdOutlinePhoneMissed } from 'react-icons/md';
 
@@ -12,6 +13,14 @@ const Profile = () => {
 
     const handleAnimationEnd = () => {
         setIsToggled((prev) => !prev); // Toggle state after animation completes
+    }
+
+
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
     };
 
 
@@ -19,9 +28,12 @@ const Profile = () => {
         <div>
             <div className='bg-white p-6 2xl:px-8 shadow rounded-lg'>
                 <div className='border-b pb-5'>
+                    <div className='flex items-end justify-end'>
+                        <button className='text-xs 2xl:text-sm 2xl:px-3 2xl:py-1 px-2 text-end py-[3px] rounded-full bg-primary text-white'>Edit Profile</button>
+                    </div>
                     <div className='w-full flex justify-center items-center'>
-                        <div className='w-32 2xl:w-40 mt-3'>
-                            <img className='rounded-2xl' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNiAaKk2O5kUsjqJP01k24EW93PnSHjuJLTA&s" alt="" />
+                        <div className='w-28 h-28 rounded-full bg-cover 2xl:w-40 2xl:h-40 mt-3'>
+                            <img className='rounded-full h-full w-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToonwNT4zbwCyq-k-qAzXexPn6URz3gT4BxQ&s" alt="" />
                         </div>
                     </div>
                     <div className='capitalize text-center mt-4'>
@@ -29,6 +41,8 @@ const Profile = () => {
                         <p className='text-xs 2xl:text-[17px] 2xl:mt-1'>Darmatology - taxas hospital</p>
                     </div>
                 </div>
+
+
 
 
                 <div className='pt-5'>

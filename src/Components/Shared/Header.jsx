@@ -6,6 +6,7 @@ import { IoNotificationsOutline } from 'react-icons/io5'
 
 const Header = () => {
   const [notifications, setNotifications] = useState(null)
+  const [showDropdown, setShowDropdown] = useState(false)
   const [showNotifications, setShowNotifications] = useState([
     {
       title: "New Message",
@@ -37,18 +38,11 @@ const Header = () => {
     },
   ]);
 
-  return (
-    <div className='mb-2'>
-      <div className="flex justify-between items-center py-4">
-        {/* <div className="hidden md:flex items-center py-2">
-          <CiSearch className="text-gray-500 mr-3 text-xl" />
-          <input
-            type="text"
-            placeholder="Search..."
-            className="outline-none bg-secondary"
-          />
-        </div> */}
 
+  console.log(showDropdown)
+  return (
+    <div className='mb-2' onMouseLeave={() => setShowDropdown(false)}>
+      <div className="flex justify-between items-center py-4">
 
         <div className="hidden md:flex w-1/2 items-center relative">
           <CiSearch className="absolute left-3 text-gray-500 text-xl" />
@@ -59,75 +53,108 @@ const Header = () => {
           />
         </div>
 
-
         <div className="flex items-center">
-
-
-
-
-          <div className="relative group">
-            {/* Notification Icon */}
-            <IoNotificationsOutline className="text-gray-500 text-3xl cursor-pointer" />
-
-            {/* Notification Badge */}
-            {notifications > 0 || (
-              <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                {notifications}
+          <div>
+            <div className="relative">
+              {/* Notification Icon */}
+              <div
+                onMouseEnter={() => setShowDropdown(true)}
+              // Close dropdown on mouse leave
+              >
+                <IoNotificationsOutline className="text-gray-500 text-3xl cursor-pointer" />
+                {notifications > 0 || (
+                  <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                    {notifications}
+                  </div>
+                )}
               </div>
-            )}
 
-            {/* Dropdown Notifications */}
-            <div className="absolute right-0 mt-2 w-72 bg-white border border-gray-300 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-[-10px] transition-all duration-300 z-10">
-              <div className="p-4">
-                <div className='flex justify-between items-center'>
-                  <h3 className=" font-bold text-gray-700">Notifications</h3>
-                  <h3 className="text-sm text-primary font-bold">Mark all as read</h3>
+              {/* Notification Dropdown */}
+              <div
+                className={`absolute right-0 mt-2 w-72 bg-white border border-gray-300 rounded-lg shadow-lg z-10 transform transition-all duration-300 ${showDropdown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[-10px]"
+                  }`}
+              >
+                <div className="p-4">
+                  {/* Header */}
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-bold text-gray-700">Notifications</h3>
+                    <button className="text-sm text-primary font-bold">
+                      Mark all as read
+                    </button>
+                  </div>
+
+                  {/* Tabs */}
+                  <div className="text-sm mt-2 flex gap-8">
+                    <button className="focus:border-b-2 focus:border-b-primary">
+                      All
+                    </button>
+                    <button className="focus:border-b-2 focus:border-b-primary">
+                      Unread
+                    </button>
+                  </div>
+
+                  {/* Example Notifications */}
+
+                  <ul className="mt-4 space-y-2 max-h-48 overflow-y-auto scrollbar-hide">
+                    {showNotifications.length > 0 ? (
+                      showNotifications.map((notification, index) => (
+                        <li
+                          key={index}
+                          className={`flex items-center gap-3 p-3 rounded-md ${notification.isUnread ? "bg-gray-100 font-bold" : "bg-white"
+                            } hover:bg-gray-200 transition`}
+                        >
+
+                          <img
+                            src={notification.image}
+                            alt={notification.title}
+                            className="w-10 h-10 rounded-full object-cover"
+                          />
+
+
+                          <div>
+                            <h4 className="text-sm font-semibold text-gray-800">
+                              {notification.title}
+                            </h4>
+                            <p className="text-xs text-gray-600">
+                              {notification.description}
+                              <span className='text-primary'> View</span>
+                            </p>
+                            <p className="text-[10px] text-gray-500 mt-1">
+                              {notification.time}
+                            </p>
+                          </div>
+                        </li>
+                      ))
+                    ) : (
+                      <p className="text-gray-500 text-center">No notifications found.</p>
+                    )}
+                  </ul>
+
+
                 </div>
-
-                <div className='text-sm mt-2 flex gap-8'>
-                  <button className=' focus:border-b-2 focus:border-b-primary'>All</button>
-                  <button className=' focus:border-b-2 focus:border-b-primary'>Unread</button>
-                </div>
-
-
-                {/* Notifications List */}
-                <ul className="mt-4 space-y-2 max-h-48 overflow-y-auto scrollbar-hide">
-                  {showNotifications.length > 0 ? (
-                    showNotifications.map((notification, index) => (
-                      <li
-                        key={index}
-                        className={`flex items-center gap-3 p-3 rounded-md ${notification.isUnread ? "bg-gray-100 font-bold" : "bg-white"
-                          } hover:bg-gray-200 transition`}
-                      >
-                        {/* Notification Image */}
-                        <img
-                          src={notification.image}
-                          alt={notification.title}
-                          className="w-10 h-10 rounded-full object-cover"
-                        />
-
-                        {/* Notification Details */}
-                        <div>
-                          <h4 className="text-sm font-semibold text-gray-800">
-                            {notification.title}
-                          </h4>
-                          <p className="text-xs text-gray-600">
-                            {notification.description}  
-                            <span className='text-primary'> View</span>
-                          </p>
-                          <p className="text-[10px] text-gray-500 mt-1">
-                            {notification.time}
-                          </p>
-                        </div>
-                      </li>
-                    ))
-                  ) : (
-                    <p className="text-gray-500 text-center">No notifications found.</p>
-                  )}
-                </ul>
               </div>
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
