@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#5754a7', // Custom primary color
+        primary: '#504da6', // Custom primary color
         secondary: '#EFF1F7', // Custom secondary color
         accent: {
           light: '#FDE68A', // Light accent color

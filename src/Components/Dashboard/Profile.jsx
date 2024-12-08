@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { FaRegEdit } from 'react-icons/fa';
+import { FaRegEdit, FaRegEnvelope } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
-import { MdOutlinePhoneMissed } from 'react-icons/md';
+import { MdOutlineEmail, MdOutlineMailOutline, MdOutlinePhoneMissed } from 'react-icons/md';
 
 const Profile = () => {
 
@@ -80,17 +80,17 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className='grid grid-cols-2 mt-7 2xl:gap-20 gap-5'>
-                        <div className='bg-primary p-[6px] rounded-xl flex flex-col items-center text-gray-200'>
-                            <h5 className='font-semibold md:text-lg lg:text-xl 2xl:text-[27px]'>18</h5>
-                            <p className='capitalize text-[12px] mb-[2px]'>Missed call</p>
+                    <div className='flex justify-between mt-8 items-center'>
+                        <div className='bg-primary 2xl:w-44 w-28 h-24 2xl:h-32 justify-center rounded-xl flex flex-col items-center text-gray-200'>
+                            <h5 className='font-semibold md:text-lg 2xl:text-[31px]'>18</h5>
+                            <p className='capitalize text-[12px] 2xl:text-lg  mb-[2px]'>Missed call</p>
                             <MdOutlinePhoneMissed className='text-center md:text-lg lg:text-xl 2xl:text-[27px]' />
                         </div>
 
-                        <div className=' p-[6px] rounded-xl flex flex-col items-center border-primary border-2'>
-                            <h5 className='font-semibold md:text-lg lg:text-xl 2xl:text-[27px]'>18</h5>
-                            <p className='capitalize text-[12px] mb-[2px]'>Missed call</p>
-                            <MdOutlinePhoneMissed className='text-center md:text-lg lg:text-xl 2xl:text-[27px]' />
+                        <div className='2xl:w-44 w-28 h-24 justify-center 2xl:h-32 rounded-xl flex flex-col text-primary  items-center border-primary border-2'>
+                            <h5 className='font-semibold md:text-lg lg:text-xl 2xl:text-[31px]'>9</h5>
+                            <p className='capitalize text-[12px] 2xl:text-lg mb-[2px]'>New Messages</p>
+                            <FaRegEnvelope className='text-center lg:text-xl 2xl:text-[27px]' />
                         </div>
                     </div>
                 </div>
@@ -100,10 +100,10 @@ const Profile = () => {
             {/* billing  */}
             <div className='bg-white px-6 2xl:px-8 py-3 2xl:py-4 mt-8 shadow rounded-lg'>
                 <div className='flex justify-between mb-6 items-center'>
-                    <p className='text-sm 2xl:text-[17px]'>Billing</p>
+                    <p className='text-sm 2xl:text-[22px]'>Billing</p>
                     <div className='flex items-center gap-1'>
                         <IoIosArrowDown />
-                        <p className='text-sm 2xl:text-[17px]'>February</p>
+                        <p className='text-xs 2xl:text-[16px]'>February</p>
                     </div>
                 </div>
 

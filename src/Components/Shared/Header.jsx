@@ -63,7 +63,7 @@ const Header = () => {
               >
                 <IoNotificationsOutline className="text-gray-500 text-3xl cursor-pointer" />
                 {notifications > 0 || (
-                  <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  <div className="absolute top-1 right-1 bg-red-600 text-white text-[10px] font-bold rounded-full w-[.7rem] h-[.7rem] flex items-center justify-center">
                     {notifications}
                   </div>
                 )}

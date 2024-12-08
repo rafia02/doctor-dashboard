@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCalendarAlt, FaCog, FaTachometerAlt, FaUserFriends } from 'react-icons/fa';
+import { FaCalendarAlt, FaCog, FaRegEnvelope, FaRegUser, FaTachometerAlt, FaUserFriends } from 'react-icons/fa';
 import { RxDashboard } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 import "../../App.css";
@@ -13,6 +13,7 @@ import { CgNotes } from 'react-icons/cg';
 import { FaRegNoteSticky } from 'react-icons/fa6';
 import { GrDocumentNotes } from 'react-icons/gr';
 import { TbMedicineSyrup } from 'react-icons/tb';
+import { PiCalendarCheck } from 'react-icons/pi';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +29,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/")}
                 >
-                    <RxDashboard className="mr-4 text-xl" />
-                    <Link to="/" className="block">
+                    <RxDashboard className="mr-4 2xl:text-2xl text-xl" />
+                    <Link to="/" className="block 2xl:text-xl">
                         Dashboard
                     </Link>
                 </li>
@@ -39,8 +40,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/appointments")}
                 >
-                    <BsCalendar4Event className="mr-4 text-xl" />
-                    <Link to="/appointments" className="block">
+                    <PiCalendarCheck className="mr-4 2xl:text-3xl text-2xl" />
+                    <Link to="/appointments" className="block 2xl:text-xl">
                         Appointments
                     </Link>
                 </li>
@@ -50,8 +51,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/patients")}
                 >
-                    <FaUserFriends className="mr-4 text-xl" />
-                    <Link to="/patients" className="block">
+                    <FaRegUser className="mr-4 2xl:text-2xl text-xl" />
+                    <Link to="/patients" className="block 2xl:text-xl">
                         Patients
                     </Link>
                 </li>
@@ -61,8 +62,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/settings")}
                 >
-                    <AiOutlineMail className="mr-4 text-xl" />
-                    <Link to="/settings" className="block">
+                    <FaRegEnvelope className="mr-4 2xl:text-2xl text-xl" />
+                    <Link to="/settings" className="block 2xl:text-xl">
                         Message
                     </Link>
                 </li>
@@ -72,8 +73,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/settings")}
                 >
-                    <RiCapsuleLine className="mr-4 text-xl" />
-                    <Link to="/settings" className="block">
+                    <RiCapsuleLine className="mr-4 2xl:text-3xl text-2xl" />
+                    <Link to="/settings" className="block 2xl:text-xl">
                         Medication
                     </Link>
                 </li>
@@ -83,8 +84,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/telemedicine")}
                 >
-                    <RiMedicineBottleLine className="mr-4 text-xl" />
-                    <Link to="/telemedicine" className="block">
+                    <RiMedicineBottleLine className="mr-4 2xl:text-3xl text-2xl" />
+                    <Link to="/telemedicine" className="block 2xl:text-xl">
                     Telemedicine
                     </Link>
                 </li>
@@ -94,8 +95,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/settings")}
                 >
-                    <FaCog className="mr-4 text-xl" />
-                    <Link to="/settings" className="block">
+                    <FaCog className="mr-4 2xl:text-2xl text-xl" />
+                    <Link to="/settings" className="block 2xl:text-xl">
                         Settings
                     </Link>
                 </li>
@@ -105,8 +106,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/settings")}
                 >
-                    <IoDocumentTextOutline className="mr-4 text-xl" />
-                    <Link to="/settings" className="block">
+                    <IoDocumentTextOutline className="mr-4 2xl:text-3xl text-2xl" />
+                    <Link to="/settings" className="block 2xl:text-xl">
                         Documents
                     </Link>
                 </li>
@@ -117,8 +118,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/billing")}
                 >
-                    <LuWarehouse className="mr-4 text-xl" />
-                    <Link to="/billing" className="block">
+                    <LuWarehouse className="mr-4 2xl:text-2xl text-xl" />
+                    <Link to="/billing" className="block 2xl:text-xl">
                     Billing
                     </Link>
                 </li>
@@ -128,8 +129,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/settings")}
                 >
-                    <GrDocumentNotes className="mr-4 text-xl" />
-                    <Link to="/settings" className="block">
+                    <CgNotes className="mr-4 2xl:text-2xl text-xl" />
+                    <Link to="/settings" className="block 2xl:text-xl">
                         Notes
                     </Link>
                 </li>
@@ -139,8 +140,8 @@ const Sidebar = () => {
                         }`}
                     onClick={() => setSelectedMenu("/settings")}
                 >
-                    <IoIosLogOut className="mr-4 text-xl" />
-                    <Link to="/settings" className="block">
+                    <IoIosLogOut className="mr-4 2xl:text-3xl text-2xl" />
+                    <Link to="/settings" className="block 2xl:text-xl">
                         Logout
                     </Link>
                 </li>
