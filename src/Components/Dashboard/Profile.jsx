@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { FaRegEdit, FaRegEnvelope } from 'react-icons/fa';
+import { FaRegEnvelope } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
-import { MdOutlineEmail, MdOutlineMailOutline, MdOutlinePhoneMissed } from 'react-icons/md';
+import { MdOutlinePhoneMissed } from 'react-icons/md';
 
 const Profile = () => {
 
