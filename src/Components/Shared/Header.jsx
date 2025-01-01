@@ -39,6 +39,7 @@ const Header = () => {
   ]);
 
 
+  
   console.log(showDropdown)
   return (
     <div className='mb-2' onMouseLeave={() => setShowDropdown(false)}>
